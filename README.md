@@ -122,6 +122,9 @@ To get a complete list of allowed configuration for your route, you can follow w
 
 To get the JSON format of your documentation, just go to the url `YOUR_SERVICE_HOST:YOUR_SERVICE_PORT/swagger.json`
 
+To access the swagger interface of your documented endpoints, just go to the url `YOUR_SERVICE_HOST:YOUR_SERVICE_PORT/documentation`
+and you will be able to test them 
+
 [Back to top](#table-of-contents)
 
 ## Contributing
