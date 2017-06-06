@@ -79,7 +79,7 @@ import { SwagModule } from '@hapiness/swag';
     plugins: {
         'hapi-swagger': {
             'custom-values': {
-              'scope': 'tada.read',
+              'scope': 'todo.read',
             }
         }
     },
