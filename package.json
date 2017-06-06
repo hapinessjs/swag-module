@@ -71,8 +71,11 @@
     "homepage": "https://github.com/hapinessjs/empty-module#readme",
     "dependencies": {
         "@hapiness/core": "^1.0.0-beta.6",
+        "@tadaweb/hapi-swagger": "~7.7.0",
         "debug": "^2.6.8",
-        "rxjs": "^5.4.0"
+        "inert": "^4.2.0",
+        "rxjs": "^5.4.0",
+        "vision": "^4.1.1"
     },
     "devDependencies": {
         "@types/fs-extra": "^3.0.2",
