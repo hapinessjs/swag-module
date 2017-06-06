@@ -8,14 +8,13 @@ import { test, suite } from 'mocha-typescript';
  */
 import * as unit from 'unit.js';
 
-import { Hapiness, HapinessModule, HttpServer, Route, OnStart, OnGet } from '@hapiness/core';
+import { Hapiness, HapinessModule, HttpServer, Lib, OnStart } from '@hapiness/core';
 import { Observable } from 'rxjs/Observable';
 
-// element to test
 import { SwagModule } from '../../src';
 
-@suite('- Integration SwagdModuleTest file')
-class SwagdModuleTest {
+@suite('- Integration LoggerModuleTest file')
+class LoggerModuleTest {
     /**
      * Function executed before the suite
      */
@@ -42,11 +41,8 @@ class SwagdModuleTest {
      */
     after() {}
 
-    /**
-     * Test if sayHello GET route returns `Hello World`
-     */
-    @test('- Check if `docs.json` GET route returns a non empty object')
-    testSayHelloGetRoute(done) {
+    @test('- Test route swagger.json exists')
+    testRouteSwaggerJsonExists(done) {
         @HapinessModule({
             version: '1.0.0',
             options: {
@@ -61,35 +57,19 @@ class SwagdModuleTest {
             constructor(private _httpServer: HttpServer) {}
 
             onStart(): void {
-                this
-                    ._httpServer
-                    .instance
-                    .inject('/docs', reply => {
-                        unit
-                            .object(reply.result)
-                            .when(_ => Hapiness.kill().subscribe(__ => done()));
-                    });
+                this._httpServer.instance.inject('/swagger.json', reply => {
+                    unit
+                        .object(reply.result)
+                        .when(_ => Hapiness.kill().subscribe(__ => done()));
+                });
             }
         }
 
         Hapiness.bootstrap(SwagModuleTest);
     }
 
-    /**
-     * Test there are multiple routes
-     */
-    @test('- GET `/docs` should be aware of all route inside the module')
-    testMultipleRoutes(done) {
-        @Route({
-            method: 'GET',
-            path: '/helloworld'
-        })
-        class HelloWorldRoute implements OnGet {
-            onGet(request, reply) {
-                reply('Hello world');
-            }
-        }
-
+    @test('- Test route /documentation exists')
+    testRouteDocumentationExists(done) {
         @HapinessModule({
             version: '1.0.0',
             options: {
@@ -98,120 +78,87 @@ class SwagdModuleTest {
             },
             imports: [
                 SwagModule
-            ],
-            declarations: [
-                HelloWorldRoute
             ]
         })
-        class HelloWorldModuleTest implements OnStart {
+        class SwagModuleTest implements OnStart {
             constructor(private _httpServer: HttpServer) {}
 
             onStart(): void {
-                this
-                    ._httpServer
-                    .instance
-                    .inject('/docs', reply => {
-                        console.log('LALALA ', JSON.stringify(reply.result, null, 2));
-                        unit
-                            .object(reply.result)
-                            .when(_ => Hapiness.kill().subscribe(__ => done()));
-                    });
+                this._httpServer.instance.inject('/documentation', reply => {
+                    unit
+                        .number(reply.statusCode)
+                        .is(200)
+                        .when(_ => Hapiness.kill().subscribe(__ => done()));
+                });
             }
         }
 
-        Hapiness.bootstrap(HelloWorldModuleTest);
+        Hapiness.bootstrap(SwagModuleTest);
     }
 
-    // /**
-    //  * Test if injected `HelloWorldService` as a `sayHello` function
-    //  */
-    // @test('- Injected `HelloWorldService` must have `sayHello` function')
-    // testInjectableHelloWorldServiceSayHello(done) {
-    //     @Lib()
-    //     class HelloWorldLib {
-    //         constructor(private _helloWorldService: HelloWorldService) {
-    //             unit.function(this._helloWorldService.sayHello)
-    //                 .when(_ => Hapiness.kill().subscribe(__ => done()));
-    //         }
-    //     }
+    @test('- Test without giving a config')
+    testSwagModuleWithoutConfig(done) {
+        @HapinessModule({
+            version: '1.0.0',
+            options: {
+                host: '0.0.0.0',
+                port: 4443
+            },
+            imports: [
+                SwagModule
+            ]
+        })
+        class SwagModuleTest implements OnStart {
+            constructor(private _httpServer: HttpServer) {}
 
-    //     @HapinessModule({
-    //         version: '1.0.0',
-    //         options: {
-    //             host: '0.0.0.0',
-    //             port: 4443
-    //         },
-    //         imports: [
-    //             HelloWorldModule
-    //         ],
-    //         declarations: [
-    //             HelloWorldLib
-    //         ]
-    //     })
-    //     class HelloWorldModuleTest {}
+            onStart(): void {
+                this._httpServer.instance.inject('/swagger.json', reply => {
+                    const result: any = reply.result;
+                    unit
+                        .string(result.info.title)
+                        .is('Module name')
+                        .when(_ =>
+                            unit
+                                .string(result.info.version)
+                                .is('1.0.0')
+                                .when(__ => Hapiness.kill().subscribe(___ => done())));
+                });
+            }
+        }
 
-    //     Hapiness.bootstrap(HelloWorldModuleTest);
-    // }
+        Hapiness.bootstrap(SwagModuleTest);
+    }
 
-    // /**
-    //  * Test if injected `HelloWorldService.sayHello()` function returns an Observable
-    //  */
-    // @test('- Injected `HelloWorldService.sayHello()` function must return an Observable')
-    // testInjectableHelloWorldServiceSayHelloObservable(done) {
-    //     @Lib()
-    //     class HelloWorldLib {
-    //         constructor(private _helloWorldService: HelloWorldService) {
-    //             unit.object(this._helloWorldService.sayHello()).isInstanceOf(Observable)
-    //                 .when(_ => Hapiness.kill().subscribe(__ => done()));
-    //         }
-    //     }
+    @test('- If config is provided to the module, it has to be retrieve')
+    testSwagModuleWithConfig(done) {
+        @HapinessModule({
+            version: '1.0.0',
+            options: {
+                host: '0.0.0.0',
+                port: 4443
+            },
+            imports: [
+                SwagModule.setConfig({ info: { title: 'TestTitle', version: 'x.x.y' } })
+            ]
+        })
+        class SwagModuleTest implements OnStart {
+            constructor(private _httpServer: HttpServer) {}
 
-    //     @HapinessModule({
-    //         version: '1.0.0',
-    //         options: {
-    //             host: '0.0.0.0',
-    //             port: 4443
-    //         },
-    //         imports: [
-    //             HelloWorldModule
-    //         ],
-    //         declarations: [
-    //             HelloWorldLib
-    //         ]
-    //     })
-    //     class HelloWorldModuleTest {}
+            onStart(): void {
+                this._httpServer.instance.inject('/swagger.json', reply => {
+                    const result: any = reply.result;
+                    unit
+                        .string(result.info.title)
+                        .is('TestTitle')
+                        .when(_ =>
+                            unit
+                                .string(result.info.version)
+                                .is('x.x.y')
+                                .when(__ => Hapiness.kill().subscribe(___ => done())));
+                });
+            }
+        }
 
-    //     Hapiness.bootstrap(HelloWorldModuleTest);
-    // }
-
-    // /**
-    //  * Test if injected `HelloWorldService.sayHello()` Observable returns 'Hello World'
-    //  */
-    // @test('- Injected `HelloWorldService.sayHello()` Observable function must return a string with `Hello World` value')
-    // testInjectableHelloWorldServiceSayHelloObservableReturnString(done) {
-    //     @Lib()
-    //     class HelloWorldLib {
-    //         constructor(private _helloWorldService: HelloWorldService) {
-    //             this._helloWorldService.sayHello().subscribe(m => unit.string(m).is('Hello World')
-    //                     .when(_ => Hapiness.kill().subscribe(__ => done())));
-    //         }
-    //     }
-
-    //     @HapinessModule({
-    //         version: '1.0.0',
-    //         options: {
-    //             host: '0.0.0.0',
-    //             port: 4443
-    //         },
-    //         imports: [
-    //             HelloWorldModule
-    //         ],
-    //         declarations: [
-    //             HelloWorldLib
-    //         ]
-    //     })
-    //     class HelloWorldModuleTest {}
-
-    //     Hapiness.bootstrap(HelloWorldModuleTest);
-    // }
+        Hapiness.bootstrap(SwagModuleTest);
+    }
 }
