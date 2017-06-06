@@ -84,13 +84,13 @@ import { SwagModule } from '@hapiness/swag';
         }
     },
     description: 'Get todo',
-    notes: 'Returns todo items',
+    notes: 'Returns todo item',
     tags: ['api', 'todo']
   }
 })
-class GetToto implements OnGet {
+class GetTodo implements OnGet {
   onGet(request, reply) {
-    reply('hello the world !!');
+    reply('I am a todo');
   }
 }
 
@@ -101,15 +101,15 @@ class GetToto implements OnGet {
     port: 4443
   },
   imports: [
-    SwagModule.setConfig({ info: { title: 'My Service Name' } })
+    SwagModule.setConfig({ info: { title: 'Todo Service' } })
   ],
-  declarations: [ GetToto ]
+  declarations: [ GetTodo ]
 })
-class HapinessdModuleApp {
+class HapinessModuleApp {
 
 }
 
-Hapiness.bootstrap(HapinessdModuleApp);
+Hapiness.bootstrap(HapinessModuleApp);
 
 
 ```
