@@ -18,9 +18,9 @@
     rxjs "^5.4.0"
     websocket "^1.0.24"
 
-"@tadaweb/hapi-swagger@~7.7.0":
-  version "7.7.0"
-  resolved "http://nexus.in.tdw/repository/npm/@tadaweb/hapi-swagger/-/hapi-swagger-7.7.0.tgz#49c56c37983002d2830f5826ca2fae94217499aa"
+"@reptilbud/hapi-swagger@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@reptilbud/hapi-swagger/-/hapi-swagger-1.0.0.tgz#5e3eaae8a69e25c7464bca9efcc5351b3ab9f1b0"
   dependencies:
     boom "^4.0.0"
     handlebars "^4.0.5"
@@ -927,17 +927,6 @@ jodid25519@^1.0.0:
   dependencies:
     jsbn "~0.1.0"
 
-joi-to-json-schema@^3.0.0:
-  version "3.0.0"
-  resolved "http://nexus.in.tdw/repository/npm/joi-to-json-schema/-/joi-to-json-schema-3.0.0.tgz#06b0d310a9d2098e2dcce1747c58dfbc593f663f"
-
-joi-to-swagger@^1.1.0:
-  version "1.1.0"
-  resolved "http://nexus.in.tdw/repository/npm/joi-to-swagger/-/joi-to-swagger-1.1.0.tgz#2783c987ca3cd0c166cd8427e49d1d5be6df7ead"
-  dependencies:
-    lodash.find "^4.0.0"
-    lodash.get "^4.0.2"
-
 joi@10.2.2, joi@10.x.x:
   version "10.2.2"
   resolved "http://nexus.in.tdw/repository/npm/joi/-/joi-10.2.2.tgz#dc5a792b7b4c6fffa562242a95b55d9d3f077e24"
@@ -1090,11 +1079,7 @@ lodash.create@3.1.1:
     lodash._basecreate "^3.0.0"
     lodash._isiterateecall "^3.0.0"
 
-lodash.find@^4.0.0:
-  version "4.6.0"
-  resolved "http://nexus.in.tdw/repository/npm/lodash.find/-/lodash.find-4.6.0.tgz#cb0704d47ab71789ffa0de8b97dd926fb88b13b1"
-
-lodash.get@^4.0.2, lodash.get@^4.1.2:
+lodash.get@^4.1.2:
   version "4.4.2"
   resolved "http://nexus.in.tdw/repository/npm/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
 

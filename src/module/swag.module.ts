@@ -1,4 +1,4 @@
-import * as HapiSwagger from '@tadaweb/hapi-swagger';
+import * as HapiSwagger from '@reptilbud/hapi-swagger';
 import * as Inert from 'inert';
 import * as Vision from 'vision';
 import { Observable } from 'rxjs/Rx';

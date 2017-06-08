@@ -118,7 +118,7 @@ Hapiness.bootstrap(HapinessModuleApp);
 
 ## Add documentation to your routes
 
-To get a complete list of allowed configuration for your route, you can follow what has been there [hapi-swagger](https://github.com/srz09/hapi-swagger)
+To get a complete list of allowed configuration for your route, you can follow what has been there [hapi-swagger](https://github.com/reptilbud/hapi-swagger)
 
 To get the JSON format of your documentation, just go to the url `YOUR_SERVICE_HOST:YOUR_SERVICE_PORT/swagger.json`
 
@@ -164,7 +164,7 @@ To set up your development environment:
     <tr>
         <td align="center"><a href="https://github.com/Juneil">Julien Fauville</a></td>
         <td align="center"><a href="https://github.com/antoinegomez">Antoine Gomez</a></td>
-        <td align="center"><a href="https://github.com/srz09">Sébastien Ritz</a></td>
+        <td align="center"><a href="https://github.com/reptilbud">Sébastien Ritz</a></td>
         <td align="center"><a href="https://github.com/njl07">Nicolas Jessel</a></td>
     </tr>
 </table>
