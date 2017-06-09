@@ -2,17 +2,17 @@
 
 <div style="margin-bottom:20px;">
 <div style="line-height:60px">
-    <a href="https://travis-ci.org/hapinessjs/logger-module.svg?branch=master">
-        <img src="https://travis-ci.org/hapinessjs/logger-module.svg?branch=master" alt="build" />
+    <a href="https://travis-ci.org/hapinessjs/swag-module.svg?branch=master">
+        <img src="https://travis-ci.org/hapinessjs/swag-module.svg?branch=master" alt="build" />
     </a>
-    <a href="https://coveralls.io/github/hapinessjs/logger-module?branch=master">
-        <img src="https://coveralls.io/repos/github/hapinessjs/logger-module/badge.svg?branch=master" alt="coveralls" />
+    <a href="https://coveralls.io/github/hapinessjs/swag-module?branch=master">
+        <img src="https://coveralls.io/repos/github/hapinessjs/swag-module/badge.svg?branch=master" alt="coveralls" />
     </a>
-    <a href="https://david-dm.org/hapinessjs/logger-module">
-        <img src="https://david-dm.org/hapinessjs/logger-module.svg" alt="dependencies" />
+    <a href="https://david-dm.org/hapinessjs/swag-module">
+        <img src="https://david-dm.org/hapinessjs/swag-module.svg" alt="dependencies" />
     </a>
-    <a href="https://david-dm.org/hapinessjs/logger-module?type=dev">
-        <img src="https://david-dm.org/hapinessjs/logger-module/dev-status.svg" alt="devDependencies" />
+    <a href="https://david-dm.org/hapinessjs/swag-module?type=dev">
+        <img src="https://david-dm.org/hapinessjs/swag-module/dev-status.svg" alt="devDependencies" />
     </a>
 </div>
 <div>
