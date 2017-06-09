@@ -1,5 +1,5 @@
 {
-  "name": "@hapiness/swag-module",
+  "name": "@hapiness/swag",
   "version": "1.0.0-beta.6",
   "description": "Generate swag documentation for Hapiness' components",
   "main": "index.js",
