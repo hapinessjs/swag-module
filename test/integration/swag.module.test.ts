@@ -8,10 +8,10 @@ import { test, suite } from 'mocha-typescript';
  */
 import * as unit from 'unit.js';
 
-import { Hapiness, HapinessModule, HttpServer, Lib, OnStart } from '@hapiness/core';
-import { Observable } from 'rxjs/Observable';
+import { Hapiness, HapinessModule, HttpServerExt, Inject, OnStart, Server } from '@hapiness/core';
 
 import { SwagModule } from '../../src';
+import { ResponseObject } from 'shot';
 
 @suite('- Integration LoggerModuleTest file')
 class LoggerModuleTest {
@@ -45,74 +45,68 @@ class LoggerModuleTest {
     testRouteSwaggerJsonExists(done) {
         @HapinessModule({
             version: '1.0.0',
-            options: {
-                host: '0.0.0.0',
-                port: 4443
-            },
             imports: [
                 SwagModule
             ]
         })
         class SwagModuleTest implements OnStart {
-            constructor(private _httpServer: HttpServer) {}
+            constructor(@Inject(HttpServerExt) private _httpServer: Server) {}
 
             onStart(): void {
-                this._httpServer.instance.inject('/swagger.json', reply => {
+                this._httpServer.inject('/swagger.json', reply => {
                     unit
                         .object(reply.result)
-                        .when(_ => Hapiness.kill().subscribe(__ => done()));
+                        .when(_ => Hapiness['extensions'].pop().value.stop().then(__ => done()));
                 });
             }
         }
 
-        Hapiness.bootstrap(SwagModuleTest);
+        Hapiness.bootstrap(SwagModuleTest, [HttpServerExt.setConfig({
+            host: '0.0.0.0',
+            port: 4443
+        })]);
     }
 
     @test('- Test route /documentation exists')
     testRouteDocumentationExists(done) {
         @HapinessModule({
             version: '1.0.0',
-            options: {
-                host: '0.0.0.0',
-                port: 4443
-            },
             imports: [
                 SwagModule
             ]
         })
         class SwagModuleTest implements OnStart {
-            constructor(private _httpServer: HttpServer) {}
+            constructor(@Inject(HttpServerExt) private _httpServer: Server) {}
 
             onStart(): void {
-                this._httpServer.instance.inject('/documentation', reply => {
+                this._httpServer.inject('/documentation', reply => {
                     unit
                         .number(reply.statusCode)
                         .is(200)
-                        .when(_ => Hapiness.kill().subscribe(__ => done()));
+                        .when(_ => Hapiness['extensions'].pop().value.stop().then(__ => done()));
                 });
             }
         }
 
-        Hapiness.bootstrap(SwagModuleTest);
+        Hapiness.bootstrap(SwagModuleTest, [HttpServerExt.setConfig({
+            host: '0.0.0.0',
+            port: 4443
+        })]);
     }
 
     @test('- Test without giving a config')
     testSwagModuleWithoutConfig(done) {
         @HapinessModule({
             version: '1.0.0',
-            options: {
-                host: '0.0.0.0',
-                port: 4443
-            },
             imports: [
                 SwagModule
             ]
         })
         class SwagModuleTest implements OnStart {
-            constructor(private _httpServer: HttpServer) {}
+            constructor(@Inject(HttpServerExt) private _httpServer: Server) {}
 
             onStart(): void {
-                this._httpServer.instance.inject('/swagger.json', reply => {
+                this._httpServer.inject('/swagger.json', reply => {
                     const result: any = reply.result;
                     unit
                         .string(result.info.title)
@@ -121,31 +115,30 @@ class LoggerModuleTest {
                             unit
                                 .string(result.info.version)
                                 .is('1.0.0')
-                                .when(__ => Hapiness.kill().subscribe(___ => done())));
+                                .when(__ => Hapiness['extensions'].pop().value.stop().then(___ => done())));
                 });
             }
         }
 
-        Hapiness.bootstrap(SwagModuleTest);
+        Hapiness.bootstrap(SwagModuleTest, [HttpServerExt.setConfig({
+            host: '0.0.0.0',
+            port: 4443
+        })]);
     }
 
     @test('- If config is provided to the module, it has to be retrieve')
     testSwagModuleWithConfig(done) {
         @HapinessModule({
             version: '1.0.0',
-            options: {
-                host: '0.0.0.0',
-                port: 4443
-            },
             imports: [
                 SwagModule.setConfig({ info: { title: 'TestTitle', version: 'x.x.y' } })
             ]
         })
         class SwagModuleTest implements OnStart {
-            constructor(private _httpServer: HttpServer) {}
+            constructor(@Inject(HttpServerExt) private _httpServer: Server) {}
 
             onStart(): void {
-                this._httpServer.instance.inject('/swagger.json', reply => {
+                this._httpServer.inject('/swagger.json', reply => {
                     const result: any = reply.result;
                     unit
                         .string(result.info.title)
@@ -154,11 +147,14 @@ class LoggerModuleTest {
                             unit
                                 .string(result.info.version)
                                 .is('x.x.y')
-                                .when(__ => Hapiness.kill().subscribe(___ => done())));
+                                .when(__ => Hapiness['extensions'].pop().value.stop().then(___ => done())));
                 });
             }
         }
 
-        Hapiness.bootstrap(SwagModuleTest);
+        Hapiness.bootstrap(SwagModuleTest, [HttpServerExt.setConfig({
+            host: '0.0.0.0',
+            port: 4443
+        })]);
     }
 }

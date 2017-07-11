@@ -1,21 +1,22 @@
 import * as HapiSwagger from '@reptilbud/hapi-swagger';
 import * as Inert from 'inert';
 import * as Vision from 'vision';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import {
     HapinessModule,
     Optional,
     Inject,
     CoreModuleWithProviders,
-    HttpServer,
+    HttpServerExt,
     InjectionToken,
-    OnRegister
+    OnRegister,
+    Server
 } from '@hapiness/core';
 
 const SWAG_MODULE_CONFIG = new InjectionToken('swag_module_config');
 
 @HapinessModule({
-    version: '1.0.0-beta.6'
+    version: '1.0.0-rc.4'
 })
 export class SwagModule implements OnRegister {
 
@@ -26,10 +27,9 @@ export class SwagModule implements OnRegister {
         };
     }
 
-    constructor(
-        private server: HttpServer,
-        @Optional() @Inject(SWAG_MODULE_CONFIG) private config
-    ) { }
+    constructor(@Inject(HttpServerExt) private server: Server,
+                @Optional() @Inject(SWAG_MODULE_CONFIG) private config) {
+    }
 
     onRegister() {
         // Add some default values (in case of no config were provided)
@@ -53,7 +53,7 @@ export class SwagModule implements OnRegister {
             }
         );
 
-        return Observable.fromPromise(this.server.instance.register([
+        return Observable.fromPromise(this.server.register([
             Inert,
             Vision,
             {
