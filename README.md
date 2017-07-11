@@ -142,6 +142,10 @@ To set up your development environment:
 
 ## Change History
 
+* v1.0.0-rc.4 (2017-07-10)
+    * Latest packages' versions.
+    * Update tests for latest `tslint` version.
+    * Module version related to core version.
 * v1.0.0-beta.6 (2017-06-07)
     * Create SwagModule
     * Documentation
