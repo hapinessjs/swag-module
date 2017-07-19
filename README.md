@@ -60,8 +60,8 @@ $ yarn add @hapiness/swag
     
 ```javascript
 "dependencies": {
-    "@hapiness/core": "^1.0.0-beta.6",
-    "@hapiness/swag": "^1.0.0-beta.6",
+    "@hapiness/core": "^1.0.0-rc.6",
+    "@hapiness/swag": "^1.0.0-rc.6",
     //...
 }
 //...
@@ -70,7 +70,7 @@ $ yarn add @hapiness/swag
 ### import `SwagModule` from the library
 
 ```javascript
-import { Hapiness, HapinessModule, HttpServer, Route, OnStart, OnGet } from '@hapiness/core';
+import { Hapiness, HapinessModule, HttpServerExt, Route, OnGet } from '@hapiness/core';
 import { SwagModule } from '@hapiness/swag';
 @Route({
   method: 'GET',
@@ -96,10 +96,6 @@ class GetTodo implements OnGet {
 
 @HapinessModule({
   version: '1.0.0',
-  options: {
-    host: '0.0.0.0',
-    port: 4443
-  },
   imports: [
     SwagModule.setConfig({ info: { title: 'Todo Service' } })
   ],
@@ -109,7 +105,9 @@ class HapinessModuleApp {
 
 }
 
-Hapiness.bootstrap(HapinessModuleApp);
+Hapiness.bootstrap(HapinessModuleApp, [
+    HttpServerExt.setConfig({ host: '0.0.0.0', port: 4443 })
+]);
 
 
 ```
