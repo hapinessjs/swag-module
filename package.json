@@ -1,6 +1,6 @@
 {
     "name": "@hapiness/swag",
-    "version": "1.0.0-rc.6",
+    "version": "1.0.0-rc.7",
     "description": "Generate swag documentation for Hapiness' components",
     "main": "index.js",
     "types": "index.d.ts",
@@ -71,32 +71,32 @@
     },
     "homepage": "https://github.com/hapinessjs/swag-module#readme",
     "dependencies": {
-        "@reptilbud/hapi-swagger": "^1.0.1",
-        "@types/node": "^8.0.14",
-        "debug": "^2.6.8",
+        "@reptilbud/hapi-swagger": "^1.0.2",
+        "@types/node": "^8.0.31",
+        "debug": "3.1.0",
         "inert": "^4.2.0",
         "vision": "^4.1.1"
     },
     "devDependencies": {
-        "@hapiness/core": "^1.0.0-rc.6",
-        "@types/fs-extra": "^3.0.3",
-        "coveralls": "^2.13.1",
-        "fs-extra": "^4.0.0",
+        "@hapiness/core": "1.0.0-rc.7",
+        "@types/fs-extra": "4.0.2",
+        "coveralls": "3.0.0",
+        "fs-extra": "^4.0.2",
         "istanbul": "^1.1.0-alpha.1",
-        "mocha": "^3.4.2",
-        "mocha-typescript": "^1.1.7",
-        "rxjs": "^5.4.2",
-        "rimraf": "^2.6.1",
-        "ts-node": "^3.1.0",
-        "tslint": "^5.5.0",
-        "typescript": "^2.4.1",
+        "mocha": "^3.5.3",
+        "mocha-typescript": "^1.1.9",
+        "rimraf": "^2.6.2",
+        "rxjs": "^5.4.3",
+        "ts-node": "^3.3.0",
+        "tslint": "^5.7.0",
+        "typescript": "^2.5.3",
         "unit.js": "^2.0.0"
     },
     "peerDependencies": {
-        "@hapiness/core": "^1.0.0-rc.6",
-        "rxjs": "^5.4.2"
+        "@hapiness/core": "1.0.0-rc.7",
+        "rxjs": "^5.4.3"
     },
     "engines": {
-        "node": ">=7.0.0"
+        "node": ">=8.0.0"
     }
 }
