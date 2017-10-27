@@ -51,17 +51,17 @@
 ### `yarn` or `npm` it in your `package.json`
 
 ```bash
-$ npm install --save @hapiness/swag
+$ npm install --save @hapiness/core @hapiness/swag rxjs
 
 or
 
-$ yarn add @hapiness/swag
+$ yarn add @hapiness/core @hapiness/swag rxjs
 ```
     
 ```javascript
 "dependencies": {
-    "@hapiness/core": "^1.0.0-rc.6",
-    "@hapiness/swag": "^1.0.0-rc.6",
+    "@hapiness/core": "^1.1.1",
+    "@hapiness/swag": "^1.0.0",
     //...
 }
 //...
@@ -78,7 +78,7 @@ import { SwagModule } from '@hapiness/swag';
   config: {
     plugins: {
         'hapi-swagger': {
-            'custom-values': {
+            'x-custom-values': {
               'scope': 'todo.read',
             }
         }
@@ -140,18 +140,10 @@ To set up your development environment:
 
 ## Change History
 
-* v1.0.0-rc.6 (2017-07-19)
-    * Latest packages' versions.
-    * `core` and `rxjs` in `peerDependencies` and need to be installed manually.
-    * Module version related to core version.
-* v1.0.0-rc.4 (2017-07-10)
-    * Latest packages' versions.
-    * Update tests for latest `tslint` version.
-    * Module version related to core version.
-* v1.0.0-beta.6 (2017-06-07)
-    * Create SwagModule
+* v1.0.0 (2017-10-27)
+    * Add possibility to have `x-*` as values
     * Documentation
-    * Module version related to core version
+    * First stable version
     
 [Back to top](#table-of-contents)
 
@@ -159,7 +151,7 @@ To set up your development environment:
 
 <table>
     <tr>
-        <td colspan="4" align="center"><a href="https://www.tadaweb.com"><img src="https://tadaweb.com/images/tadaweb/logo.png" width="117" alt="tadaweb" /></a></td>
+        <td colspan="4" align="center"><a href="https://www.tadaweb.com"><img src="http://bit.ly/2xHQkTi" width="117" alt="tadaweb" /></a></td>
     </tr>
     <tr>
         <td align="center"><a href="https://github.com/Juneil"><img src="https://avatars3.githubusercontent.com/u/6546204?v=3&s=117" width="117"/></a></td>
