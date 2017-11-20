@@ -60,8 +60,8 @@ $ yarn add @hapiness/core @hapiness/swag rxjs
     
 ```javascript
 "dependencies": {
-    "@hapiness/core": "^1.1.1",
-    "@hapiness/swag": "^1.0.0",
+    "@hapiness/core": "^1.2.2",
+    "@hapiness/swag": "^1.1.0",
     //...
 }
 //...
@@ -80,7 +80,8 @@ import { SwagModule } from '@hapiness/swag';
         'hapi-swagger': {
             'x-custom-values': {
               'scope': 'todo.read',
-            }
+            },
+            'x-toto': 'tata'
         }
     },
     description: 'Get todo',
@@ -140,6 +141,10 @@ To set up your development environment:
 
 ## Change History
 
+* v1.1.0 (2017-11-20)
+    * Latest packages' versions.
+    * Documentation.
+    * Change packaging process.
 * v1.0.0 (2017-10-27)
     * Add possibility to have `x-*` as values
     * Documentation

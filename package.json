@@ -1,8 +1,8 @@
 {
     "name": "@hapiness/swag",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Generate swag documentation for Hapiness' components",
-    "main": "index.js",
+    "main": "commonjs/index.js",
     "types": "index.d.ts",
     "private": false,
     "scripts": {
@@ -72,14 +72,14 @@
     "homepage": "https://github.com/hapinessjs/swag-module#readme",
     "dependencies": {
         "@reptilbud/hapi-swagger": "^2.0.0",
-        "@types/node": "^8.0.47",
+        "@types/node": "^8.0.53",
         "debug": "^3.1.0",
         "inert": "^4.2.1",
         "vision": "^4.1.1"
     },
     "devDependencies": {
-        "@hapiness/core": "^1.1.1",
-        "@types/fs-extra": "^4.0.3",
+        "@hapiness/core": "^1.2.2",
+        "@types/fs-extra": "^4.0.5",
         "coveralls": "^3.0.0",
         "fs-extra": "^4.0.2",
         "istanbul": "^1.1.0-alpha.1",
@@ -89,11 +89,11 @@
         "rxjs": "^5.5.2",
         "ts-node": "^3.3.0",
         "tslint": "^5.8.0",
-        "typescript": "^2.5.3",
+        "typescript": "^2.6.1",
         "unit.js": "^2.0.0"
     },
     "peerDependencies": {
-        "@hapiness/core": "^1.1.1",
+        "@hapiness/core": "^1.2.2",
         "rxjs": "^5.5.2"
     },
     "engines": {
