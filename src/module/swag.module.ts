@@ -16,7 +16,7 @@ import {
 const SWAG_MODULE_CONFIG = new InjectionToken('swag_module_config');
 
 @HapinessModule({
-    version: '1.0.0'
+    version: '1.1.0'
 })
 export class SwagModule implements OnRegister {
 
