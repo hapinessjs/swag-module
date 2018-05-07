@@ -72,29 +72,29 @@
     "homepage": "https://github.com/hapinessjs/swag-module#readme",
     "dependencies": {
         "@reptilbud/hapi-swagger": "^2.1.0",
-        "@types/node": "^8.0.53",
+        "@types/node": "^9.0.0",
         "debug": "^3.1.0",
         "inert": "^4.2.1",
         "vision": "^4.1.1"
     },
     "devDependencies": {
-        "@hapiness/core": "^1.2.2",
-        "@types/fs-extra": "^4.0.5",
+        "@hapiness/core": "^1.5.1",
+        "@types/fs-extra": "^5.0.2",
         "coveralls": "^3.0.0",
-        "fs-extra": "^4.0.2",
+        "fs-extra": "^6.0.0",
         "istanbul": "^1.1.0-alpha.1",
         "mocha": "^4.0.1",
         "mocha-typescript": "^1.1.12",
         "rimraf": "^2.6.2",
-        "rxjs": "^5.5.2",
+        "rxjs": "^5.5.10",
         "ts-node": "^3.3.0",
         "tslint": "^5.8.0",
         "typescript": "^2.6.1",
         "unit.js": "^2.0.0"
     },
     "peerDependencies": {
-        "@hapiness/core": "^1.2.2",
-        "rxjs": "^5.5.2"
+        "@hapiness/core": "^1.5.1",
+        "rxjs": "^5.5.10"
     },
     "engines": {
         "node": ">=8.0.0"
