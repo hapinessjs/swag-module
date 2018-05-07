@@ -1,6 +1,6 @@
 {
     "name": "@hapiness/swag",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "Generate swag documentation for Hapiness' components",
     "main": "commonjs/index.js",
     "types": "index.d.ts",
@@ -71,7 +71,7 @@
     },
     "homepage": "https://github.com/hapinessjs/swag-module#readme",
     "dependencies": {
-        "@reptilbud/hapi-swagger": "^2.0.0",
+        "@reptilbud/hapi-swagger": "^2.1.0",
         "@types/node": "^8.0.53",
         "debug": "^3.1.0",
         "inert": "^4.2.1",
